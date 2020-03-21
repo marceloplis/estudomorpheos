@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.datasource">java:comp/env/jdbc/EstudoMorpheosDB</property>
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">none</property>	
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.DatasourceConnectionProvider</property>
+			
+		<mapping class="br.com.morpheos.entity.UnidadeAtendimentoEntity"/>
+		<mapping class="br.com.morpheos.entity.UsuarioEntity"/>
+		<mapping class="br.com.morpheos.entity.PerfilAcessoEntity"/>
+		<mapping class="br.com.morpheos.entity.LogAuditoriaEstudoEntity"/>		
+		<mapping class="br.com.morpheos.entity.DoencaEventoEntity"/>
+		<mapping class="br.com.morpheos.entity.GrupoMedicamentoEntity"/>
+		<mapping class="br.com.morpheos.entity.MedicamentoEntity"/>
+		
+		<mapping class="br.com.morpheos.entity.PacienteEntity"/>
+		<mapping class="br.com.morpheos.entity.VisitaEntity"/>
+		<mapping class="br.com.morpheos.entity.Visita00Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita01Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita02Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita03Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita04Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita05Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita06Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita07Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita08Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita09Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita10Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita11Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita12Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita13Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita14Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita15Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita16Entity"/>
+		<mapping class="br.com.morpheos.entity.Visita17Entity"/>
+		<mapping class="br.com.morpheos.entity.EventoAdversoEntity"/>	
+		<mapping class="br.com.morpheos.entity.SaidaEstudoEntity"/>	
+		
+		<mapping class="br.com.morpheos.entity.QuestBioquimicaEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestEcocardiogramaEntity"/>			
+		<mapping class="br.com.morpheos.entity.QuestPoligrafiaEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestPolissonografiaEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestPressaoArterialEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestAplicacaoEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestBerlimEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestCageEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestAtividadeFisicaEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestMapaEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestSphygmocorEntity"/>
+		<mapping class="br.com.morpheos.entity.QuestMedicamentoUsoEntity"/>
+		
+		<mapping class="br.com.morpheos.entity.AdesaoTratamentoEntity"/>
+		<mapping class="br.com.morpheos.entity.AdesaoMedicacaoEntity"/>
+	
+	</session-factory>
+
+</hibernate-configuration>

@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ 	<data-sources/>
+ 	
+ 	<form-beans>
+ 		<form-bean name="LoginForm"   			type="br.com.morpheos.action.login.LoginForm"/> 
+ 		<form-bean name="novaSenhaForm" 		type="br.com.morpheos.action.login.NovaSenhaForm"/>	
+ 		
+ 		<form-bean name="usuarioForm" 			type="br.com.morpheos.action.admin.usuario.UsuarioForm"/>
+ 		<form-bean name="unidadeForm" 			type="br.com.morpheos.action.admin.unidade.UnidadeAtendimentoForm"/>	
+ 		<form-bean name="doencaForm" 			type="br.com.morpheos.action.admin.doenca.DoencaEventoForm"/>
+ 		<form-bean name="grpmedicamentoForm" 	type="br.com.morpheos.action.admin.grpmedicamento.GrpMedicamentoForm"/>
+ 		<form-bean name="medicamentoForm" 		type="br.com.morpheos.action.admin.medicamento.MedicamentoForm"/>
+ 		
+ 		<form-bean name="pacienteForm" 			type="br.com.morpheos.action.estudo.paciente.PacienteForm"/>
+ 		<form-bean name="visitasForm"  			type="br.com.morpheos.action.estudo.visita.VisitasForm"/>
+ 		<form-bean name="questionariosForm"		type="br.com.morpheos.action.estudo.questionarios.QuestionariosForm"/>
+ 		<form-bean name="eventoForm" 			type="br.com.morpheos.action.estudo.eventoadverso.EventoAdversoForm"/>
+ 		<form-bean name="saidaForm" 			type="br.com.morpheos.action.estudo.saida.SaidaEstudoForm"/>
+ 		
+ 		<form-bean name="aprovacaoForm"   		type="br.com.morpheos.action.estudo.aprovacao.AprovacaoForm"/>
+ 		
+ 		<form-bean name="estatisticasForm" 		type="br.com.morpheos.action.estatisticas.EstatisticasForm"/>
+ 		<form-bean name="relatoriosForm" 		type="br.com.morpheos.action.relatorios.RelatoriosForm"/>
+ 		<form-bean name="auditoriaForm" 		type="br.com.morpheos.action.estudo.auditoria.AuditoriaForm"/>
+ 		<form-bean name="relatoriosExcelForm" 	type="br.com.morpheos.action.relatorios.RelatoriosExcelForm"/>
+ 	</form-beans>
+ 	
+ 	<global-exceptions>           
+      	<exception handler="br.com.morpheos.action.common.GlobalExceptionHandler" key="global.error.message" type="java.lang.Exception">
+      	</exception>
+	</global-exceptions>
+
+ 	<global-forwards>
+      	<forward name="error" path="/error.do" />
+	</global-forwards>      
+
+ 
+ 	<action-mappings>  	
+ 	
+ 		<action path="/error" forward="page.error" />			
+  		
+  		<!-- LOGIN -->
+  		<action parameter="method" 
+  				path="/formlogin" 
+  				type="br.com.morpheos.action.login.LoginAction" 
+  				scope="request"
+  				name="LoginForm"
+  				validate="false"
+  				input="login.form.page">
+   			<forward name="login-form" 	path="login.form.page"/>
+  		</action>
+  		<action parameter="method" 
+  				path="/login" 
+  				type="br.com.morpheos.action.login.LoginAction" 
+  				scope="request"
+  				name="LoginForm"
+  				validate="true"
+  				input="login.form.page">
+   			<forward name="login-form" 	path="login.form.page"/>
+   			<forward name="sucesso" 	path="/secure/home.do?method=home" redirect="true"/>
+   			<forward name="erro" 		path="login.form.page"/>
+  		</action>  
+  		
+  		<action parameter="method" 
+  				path="/secure/trocarsenha" 
+  				type="br.com.morpheos.action.login.NovaSenhaAction" 
+  				scope="session"
+  				name="novaSenhaForm"
+  				validate="false"
+  				input="novasenha.formulario.page">
+  			<forward name="trocar-senha"	path="novasenha.formulario.page"/>
+  		</action>  		
+  		<action parameter="method" 
+  				path="/secure/gravarsenha" 
+  				type="br.com.morpheos.action.login.NovaSenhaAction" 
+  				scope="session"
+  				name="novaSenhaForm"
+  				validate="true"
+  				input="novasenha.formulario.page">
+  			<forward name="sucesso" 		path="novasenha.formulario.page"/>
+  		</action>
+  		
+  		<!-- HOME -->		
+  		<action parameter="method" 
+  				path="/secure/home" 
+  				type="br.com.morpheos.action.login.LoginAction" 
+  				scope="request"
+  				name="LoginForm"
+  				validate="false"
+  				input="sistema.home.page">
+  			<forward name="home" 	path="sistema.home.page"/>
+  		</action>   
+  		
+  		<!--  CADASTROS BASICOS -->
+  		<action parameter="method" 
+  				path="/secure/admin/usuario" 
+  				type="br.com.morpheos.action.admin.usuario.UsuarioAction" 
+  				scope="session"
+  				name="usuarioForm"
+  				validate="false"
+  				input="usuario.formulario.page">
+  			<forward name="formulario" 		path="usuario.formulario.page"/>
+  			<forward name="consulta" 		path="usuario.consulta.page"/> 
+  			<forward name="listar" 			path="usuario.lista.page"/>  			
+  		</action>  		
+  		<action parameter="method" 
+  				path="/secure/admin/gravausuario" 
+  				type="br.com.morpheos.action.admin.usuario.UsuarioAction" 
+  				scope="session"
+  				name="usuarioForm"
+  				validate="true"
+  				input="usuario.formulario.page">
+  			<forward name="sucesso" 	path="usuario.lista.page"/>
+  			<forward name="formulario" 	path="usuario.formulario.page"/>
+  		</action> 
+  		
+  		<action parameter="method" 
+  				path="/secure/admin/unidade" 
+  				type="br.com.morpheos.action.admin.unidade.UnidadeAtendimentoAction" 
+  				scope="request"
+  				name="unidadeForm"
+  				validate="false"
+  				input="unidade.lista.page">
+  			<forward name="formulario" 	path="unidade.formulario.page"/>
+  			<forward name="listar" 		path="unidade.lista.page"/> 		
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/admin/gravaunidade" 
+  				type="br.com.morpheos.action.admin.unidade.UnidadeAtendimentoAction" 
+  				scope="request"
+  				name="unidadeForm"
+  				validate="true"
+  				input="unidade.formulario.page">
+  			<forward name="sucesso" 	path="unidade.lista.page"/>  			
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/admin/doenca" 
+  				type="br.com.morpheos.action.admin.doenca.DoencaEventoAction" 
+  				scope="request"
+  				name="doencaForm"
+  				validate="false"
+  				input="doenca.lista.page">
+  			<forward name="formulario" 	path="doenca.formulario.page"/>
+  			<forward name="listar" 		path="doenca.lista.page"/> 		
+  			<forward name="sucesso" 	path="/secure/admin/doenca.do?method=lista" redirect="true"/>  	
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/admin/gravadoenca" 
+  				type="br.com.morpheos.action.admin.doenca.DoencaEventoAction" 
+  				scope="request"
+  				name="doencaForm"
+  				validate="true"
+  				input="doenca.formulario.page">
+  			<forward name="sucesso" 	path="/secure/admin/doenca.do?method=lista" redirect="true"/>  			
+  		</action> 
+  		
+  		<action parameter="method" 
+  				path="/secure/admin/grpmedicamento" 
+  				type="br.com.morpheos.action.admin.grpmedicamento.GrpMedicamentoAction" 
+  				scope="request"
+  				name="grpmedicamentoForm"
+  				validate="false"
+  				input="grpmedicamento.lista.page">
+  			<forward name="formulario" 	path="grpmedicamento.formulario.page"/>
+  			<forward name="listar" 		path="grpmedicamento.lista.page"/> 	
+  			<forward name="sucesso" 	path="/secure/admin/grpmedicamento.do?method=lista" redirect="true"/>	
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/admin/gravagrpmedicamento" 
+  				type="br.com.morpheos.action.admin.grpmedicamento.GrpMedicamentoAction" 
+  				scope="request"
+  				name="grpmedicamentoForm"
+  				validate="true"
+  				input="grpmedicamento.formulario.page">
+  			<forward name="sucesso" 	path="/secure/admin/grpmedicamento.do?method=lista" redirect="true"/>	  			
+  		</action> 
+  		
+  		<action parameter="method" 
+  				path="/secure/admin/medicamento" 
+  				type="br.com.morpheos.action.admin.medicamento.MedicamentoAction" 
+  				scope="request"
+  				name="medicamentoForm"
+  				validate="false"
+  				input="medicamento.lista.page">
+  			<forward name="formulario" 	path="medicamento.formulario.page"/>
+  			<forward name="listar" 		path="medicamento.lista.page"/> 
+  			<forward name="sucesso" 	path="/secure/admin/medicamento.do?method=lista" redirect="true"/>		
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/admin/gravamedicamento" 
+  				type="br.com.morpheos.action.admin.medicamento.MedicamentoAction" 
+  				scope="request"
+  				name="medicamentoForm"
+  				validate="true"
+  				input="medicamento.formulario.page">
+  			<forward name="sucesso" 	path="/secure/admin/medicamento.do?method=lista" redirect="true"/>  			
+  		</action> 
+  		
+  		<!-- ESTUDO -->
+  		<action parameter="method" 
+  				path="/secure/paciente" 
+  				type="br.com.morpheos.action.estudo.paciente.PacienteAction" 
+  				scope="session"
+  				name="pacienteForm"
+  				validate="false"
+  				input="paciente.cadpaciente.page">
+  			<forward name="formulario" 	path="paciente.formulario.page"/>
+  			<forward name="consulta" 	path="paciente.consulta.page"/>
+  			<forward name="listar" 		path="paciente.lista.page"/>   			
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/gravapaciente" 
+  				type="br.com.morpheos.action.estudo.paciente.PacienteAction" 
+  				scope="session"
+  				name="pacienteForm"
+  				validate="true"
+  				input="paciente.formulario.page">
+  			<forward name="sucesso" 	path="paciente.formulario.page"/> 
+  			<forward name="formulario" 	path="paciente.formulario.page"/> 			
+  		</action> 
+  		
+  		<action parameter="method" 
+  				path="/secure/visitas" 
+  				type="br.com.morpheos.action.estudo.visita.VisitasAction" 
+  				scope="session"
+  				name="visitasForm"
+  				validate="false">
+  			<forward name="formvisita00" 	path="visita.00.page"/>
+  			<forward name="formvisita01" 	path="visita.01.page"/> 
+  			<forward name="formvisita02" 	path="visita.02.page"/> 
+  			<forward name="formvisita03" 	path="visita.03.page"/> 
+  			<forward name="formvisita04" 	path="visita.04.page"/> 
+  			<forward name="formvisita05" 	path="visita.05.page"/> 
+  			<forward name="formvisita06" 	path="visita.06.page"/> 
+  			<forward name="formvisita07" 	path="visita.07.page"/> 
+  			<forward name="formvisita08" 	path="visita.08.page"/> 
+  			<forward name="formvisita09" 	path="visita.09.page"/> 
+  			<forward name="formvisita10" 	path="visita.10.page"/> 
+  			<forward name="formvisita11" 	path="visita.11.page"/> 
+  			<forward name="formvisita12" 	path="visita.12.page"/> 
+  			<forward name="formvisita13" 	path="visita.13.page"/> 
+  			<forward name="formvisita14" 	path="visita.14.page"/> 
+  			<forward name="formvisita15" 	path="visita.15.page"/> 
+  			<forward name="formvisita16" 	path="visita.16.page"/> 
+  			<forward name="formvisita17" 	path="visita.17.page"/> 	
+  			<forward name="erro-fluxo" 		path="visita.erro.fluxo.page"/>		
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/gravavisita" 
+  				type="br.com.morpheos.action.estudo.visita.VisitasAction" 
+  				scope="session"
+  				name="visitasForm"
+  				validate="true"
+  				input="visita.errovalidacao.page">
+  			<forward name="sucesso00" 		path="visita.00.page"/>
+  			<forward name="sucesso01" 		path="visita.01.page"/> 
+  			<forward name="sucesso02" 		path="visita.02.page"/> 
+  			<forward name="sucesso03" 		path="visita.03.page"/> 
+  			<forward name="sucesso04" 		path="visita.04.page"/> 
+  			<forward name="sucesso05" 		path="visita.05.page"/> 
+  			<forward name="sucesso06" 		path="visita.06.page"/> 
+  			<forward name="sucesso07" 		path="visita.07.page"/> 
+  			<forward name="sucesso08" 		path="visita.08.page"/> 
+  			<forward name="sucesso09" 		path="visita.09.page"/> 
+  			<forward name="sucesso10" 		path="visita.10.page"/> 
+  			<forward name="sucesso11" 		path="visita.11.page"/> 
+  			<forward name="sucesso12" 		path="visita.12.page"/> 
+  			<forward name="sucesso13" 		path="visita.13.page"/> 
+  			<forward name="sucesso14" 		path="visita.14.page"/> 
+  			<forward name="sucesso15" 		path="visita.15.page"/> 
+  			<forward name="sucesso16" 		path="visita.16.page"/> 
+  			<forward name="sucesso17" 		path="visita.17.page"/> 
+  			<forward name="formvisita00" 	path="visita.00.page"/>
+  			<forward name="formvisita01" 	path="visita.01.page"/> 
+  			<forward name="formvisita02" 	path="visita.02.page"/> 
+  			<forward name="formvisita03" 	path="visita.03.page"/> 
+  			<forward name="formvisita04" 	path="visita.04.page"/> 
+  			<forward name="formvisita05" 	path="visita.05.page"/> 
+  			<forward name="formvisita06" 	path="visita.06.page"/> 
+  			<forward name="formvisita07" 	path="visita.07.page"/> 
+  			<forward name="formvisita08" 	path="visita.08.page"/> 
+  			<forward name="formvisita09" 	path="visita.09.page"/> 
+  			<forward name="formvisita10" 	path="visita.10.page"/> 
+  			<forward name="formvisita11" 	path="visita.11.page"/> 
+  			<forward name="formvisita12" 	path="visita.12.page"/> 
+  			<forward name="formvisita13" 	path="visita.13.page"/> 
+  			<forward name="formvisita14" 	path="visita.14.page"/> 
+  			<forward name="formvisita15" 	path="visita.15.page"/> 
+  			<forward name="formvisita16" 	path="visita.16.page"/> 
+  			<forward name="formvisita17" 	path="visita.17.page"/> 
+  			<forward name="erro-fluxo" 			path="visita.erro.fluxo.page"/>	
+  			<forward name="sucessoaprovacao" 	path="/secure/aprovacao.do?method=lista"/>				
+  		</action> 
+  			
+  		
+  		<action parameter="method" 
+  				path="/secure/questionarios" 
+  				type="br.com.morpheos.action.estudo.questionarios.QuestionariosAction" 
+  				scope="session"
+  				name="questionariosForm"
+  				validate="false">
+  				<forward name="formpressaoarterial" 	path="questionario.pressaoarterial.page"/>
+  				<forward name="formmedicamentouso" 		path="questionario.medicamentouso.page"/>
+  				<forward name="formaplicacao" 			path="questionario.aplicacao.page"/>
+  				<forward name="formberlim" 				path="questionario.berlim.page"/>
+  				<forward name="formcage" 				path="questionario.cage.page"/>
+  				<forward name="formatividadefisica" 	path="questionario.atividadefisica.page"/>
+  				<forward name="formmapa" 				path="questionario.mapa.page"/>
+  				<forward name="formpoligrafia" 			path="questionario.poligrafia.page"/>
+  				<forward name="formpolissonografia" 	path="questionario.polissonografia.page"/>
+  				<forward name="formecocardiograma" 		path="questionario.ecocardiograma.page"/>
+  				<forward name="formbioquimica" 			path="questionario.bioquimica.page"/>
+  				<forward name="formsphygmocor" 			path="questionario.sphygmocor.page"/>
+  				<forward name="formvisita0" 			path="visita.00.page"/>
+	  			<forward name="formvisita1" 			path="visita.01.page"/> 
+	  			<forward name="formvisita2" 			path="visita.02.page"/> 
+	  			<forward name="formvisita3" 			path="visita.03.page"/> 
+	  			<forward name="formvisita4" 			path="visita.04.page"/> 
+	  			<forward name="formvisita5" 			path="visita.05.page"/> 
+	  			<forward name="formvisita6" 			path="visita.06.page"/> 
+	  			<forward name="formvisita7" 			path="visita.07.page"/> 
+	  			<forward name="formvisita8" 			path="visita.08.page"/> 
+	  			<forward name="formvisita9" 			path="visita.09.page"/> 
+	  			<forward name="formvisita10" 			path="visita.10.page"/> 
+	  			<forward name="formvisita11" 			path="visita.11.page"/> 
+	  			<forward name="formvisita12" 			path="visita.12.page"/> 
+	  			<forward name="formvisita13" 			path="visita.13.page"/> 
+	  			<forward name="formvisita14" 			path="visita.14.page"/> 
+	  			<forward name="formvisita15" 			path="visita.15.page"/> 
+	  			<forward name="formvisita16" 			path="visita.16.page"/> 
+	  			<forward name="formvisita17" 			path="visita.17.page"/> 
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/gravaquestionarios" 
+  				type="br.com.morpheos.action.estudo.questionarios.QuestionariosAction" 
+  				scope="session"
+  				name="questionariosForm"
+  				validate="true">
+  				<forward name="sucessopressaoarterial" 	path="questionario.pressaoarterial.page"/>
+  				<forward name="sucessomedicamentouso" 	path="questionario.medicamentouso.page"/>
+  				<forward name="sucessoaplicacao" 		path="questionario.aplicacao.page"/>
+  				<forward name="sucessoberlim" 			path="questionario.berlim.page"/>
+  				<forward name="sucessocage" 			path="questionario.cage.page"/>
+  				<forward name="sucessoatividadefisica" 	path="questionario.atividadefisica.page"/>
+  				<forward name="sucessomapa" 			path="questionario.mapa.page"/>
+  				<forward name="sucessopoligrafia" 		path="questionario.poligrafia.page"/>
+  				<forward name="sucessopolissonografia" 	path="questionario.polissonografia.page"/>
+  				<forward name="sucessoecocardiograma" 	path="questionario.ecocardiograma.page"/>
+  				<forward name="sucessobioquimica" 		path="questionario.bioquimica.page"/>
+  				<forward name="sucessosphygmocor" 		path="questionario.sphygmocor.page"/>
+  				<forward name="formpressaoarterial" 	path="questionario.pressaoarterial.page"/>
+  				<forward name="formmedicamentouso" 		path="questionario.medicamentouso.page"/>
+  				<forward name="formaplicacao" 			path="questionario.aplicacao.page"/>
+  				<forward name="formberlim" 				path="questionario.berlim.page"/>
+  				<forward name="formcage" 				path="questionario.cage.page"/>
+  				<forward name="formatividadefisica" 	path="questionario.atividadefisica.page"/>
+  				<forward name="formmapa" 				path="questionario.mapa.page"/>
+  				<forward name="formpoligrafia" 			path="questionario.poligrafia.page"/>
+  				<forward name="formpolissonografia" 	path="questionario.polissonografia.page"/>
+  				<forward name="formecocardiograma" 		path="questionario.ecocardiograma.page"/>
+  				<forward name="formbioquimica" 			path="questionario.bioquimica.page"/>
+  				<forward name="formsphygmocor" 			path="questionario.sphygmocor.page"/>
+  				<forward name="erro-fluxo" 				path="visita.erro.fluxo.page"/>		
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/evento" 
+  				type="br.com.morpheos.action.estudo.eventoadverso.EventoAdversoAction" 
+  				scope="session"
+  				name="eventoForm"
+  				validate="false"
+  				input="evento.lista.page">
+  			<forward name="formevento" 	path="evento.formulario.page"/>
+  			<forward name="listar" 		path="evento.lista.page"/> 	
+  			<forward name="sucesso" 	path="evento.lista.page"/> 	
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/gravaevento" 
+  				type="br.com.morpheos.action.estudo.eventoadverso.EventoAdversoAction" 
+  				scope="session"
+  				name="eventoForm"
+  				validate="true"
+  				input="evento.formulario.page">
+  			<forward name="formevento" 	path="evento.formulario.page"/>
+  			<forward name="listar" 		path="evento.lista.page"/> 	
+  			<forward name="sucesso" 	path="evento.lista.page"/>
+  			<forward name="sucessoaprovacao" 	path="/secure/aprovacao.do?method=lista"/>	 	
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/saida" 
+  				type="br.com.morpheos.action.estudo.saida.SaidaEstudoAction" 
+  				scope="session"
+  				name="saidaForm"
+  				validate="false">
+  			<forward name="formulario" 	path="saida.formulario.page"/>	
+  		</action>
+  		
+  		<action parameter="method" 
+  				path="/secure/gravasaida" 
+  				type="br.com.morpheos.action.estudo.saida.SaidaEstudoAction" 
+  				scope="session"
+  				name="saidaForm"
+  				validate="true"
+  				input="saida.formulario.page">
+  			<forward name="formulario" 		path="saida.formulario.page"/>	
+  			<forward name="sucessosaida" 	path="saida.formulario.page"/>
+  			<forward name="sucessoaprovacao" 	path="/secure/aprovacao.do?method=lista"/>	
+  		</action>
+  		
+  		<!-- APROVACAO -->
+  		<action parameter="method" 
+  				path="/secure/aprovacao" 
+  				type="br.com.morpheos.action.estudo.aprovacao.AprovacaoAction" 
+  				scope="session"
+  				name="aprovacaoForm"
+  				validate="false">
+  			<forward name="filtro" 	path="aprovacao.filtro.page"/>	
+  			<forward name="lista" 	path="aprovacao.lista.page"/>	
+  		</action>
+  		 
+  		<!-- ESTATISTICAS --> 
+  		<action parameter="method" 
+  				path="/secure/estatisticas" 
+  				type="br.com.morpheos.action.estatisticas.EstatisticasAction" 
+  				scope="session"
+  				name="estatisticasForm"
+  				validate="false">
+  			<forward name="graficos" 	path="estatisticas.graficos.page"/>	
+  		</action>
+  		
+  		<!-- RELATORIOS --> 
+  		<action parameter="method" 
+  				path="/secure/relatorios" 
+  				type="br.com.morpheos.action.relatorios.RelatoriosAction" 
+  				scope="session"
+  				name="relatoriosForm"
+  				validate="false">
+  			<forward name="filtro" 			path="relatorio.filtro.page"/>	
+  			<forward name="listaPacientes"  path="relatorio.listaPacientes.page"/>	
+  			<forward name="listaVisitas"    path="relatorio.listaVisitas.page"/>
+  		</action>
+  		<action parameter="method" 
+  				path="/secure/relatoriosExcel" 
+  				type="br.com.morpheos.action.relatorios.RelatoriosExcelAction" 
+  				scope="session"
+  				name="relatoriosExcelForm"
+  				validate="false">
+  			<forward name="filtro" 	path="relatorioExcel.filtro.page"/>	
+  		</action>
+  		
+  		
+  		<!-- Auditoria --> 
+  		<action parameter="method" 
+  				path="/secure/auditoria" 
+  				type="br.com.morpheos.action.estudo.auditoria.AuditoriaAction" 
+  				scope="session"
+  				name="auditoriaForm"
+  				validate="false">
+  			<forward name="filtro" 	path="auditoria.logs.page"/>
+  			<forward name="lista" 	path="auditoria.logs.page"/>	
+  		</action>
+  				
+ 	</action-mappings>
+	
+	<controller/>
+ 
+ 	<message-resources parameter="morpheos"/>
+ 
+ 	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+  		<set-property property="moduleAware" value="true"/>
+  		<set-property property="definitions-config" value="/WEB-INF/tiles-config.xml"/>
+ 	</plug-in>
+ 	
+</struts-config>

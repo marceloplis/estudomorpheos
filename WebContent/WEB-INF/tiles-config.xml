@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+ 	<definition name="tiles-config"/>
+ 	
+ 	<definition name="layout-only-body" path="/templates/layout-only-body.jsp">        
+        <put name="body"   value="" />
+    </definition> 
+ 	
+ 	<definition name="layout" path="/templates/layout.jsp">        
+        <put name="header" value="/templates/header.jsp" />
+        <put name="footer" value="/templates/footer.jsp" />
+        <put name="body"   value="" />
+    </definition> 
+ 	
+ 	<definition name="layout-estudo" path="/templates/layout-estudo.jsp">        
+        <put name="header" 			value="/templates/header.jsp" />
+        <put name="menu-visitas"   	value="/templates/menu-visitas.jsp" />
+        <put name="footer" 			value="/templates/footer.jsp" />
+        <put name="body"   			value="" />
+    </definition>    
+    
+    <!-- Global -->
+    <definition name="page.error" extends="layout">
+        <put name="body"   value="/paginas/global/error.jsp" />
+    </definition>
+    
+    <!-- LOGIN -->
+    <definition name="login.form.page" extends="layout-only-body">
+        <put name="body"   value="/paginas/login/login.jsp" />
+    </definition>   
+    
+    <definition name="novasenha.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/login/trocarsenha.jsp" />
+    </definition>
+    
+    <!-- HOME -->
+    <definition name="sistema.home.page" extends="layout">
+        <put name="body"   value="/paginas/home/inicio.jsp" />
+    </definition>
+    
+    <!-- FORMULARIOS -->
+    <definition name="usuario.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/usuario/formulario.jsp" />
+    </definition>
+    <definition name="usuario.consulta.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/usuario/consulta.jsp" />
+    </definition>
+    
+    <definition name="unidade.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/unidade/formulario.jsp" />
+    </definition>
+ 	
+ 	<definition name="doenca.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/doenca/formulario.jsp" />
+    </definition>
+ 	
+ 	<definition name="grpmedicamento.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/grpmedicamento/formulario.jsp" />
+    </definition>
+ 	
+ 	<definition name="medicamento.formulario.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/medicamento/formulario.jsp" />
+    </definition>
+    
+    <definition name="paciente.formulario.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/paciente/formulario.jsp" />
+    </definition>
+    <definition name="paciente.consulta.page" extends="layout">
+    	<put name="body"   value="/paginas/estudo/paciente/consulta.jsp" />
+    </definition>  
+  
+  	<definition name="visita.00.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita00.jsp" />
+    </definition>
+    <definition name="visita.01.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita01.jsp" />
+    </definition>
+    <definition name="visita.02.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita02.jsp" />
+    </definition>
+    <definition name="visita.03.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita03.jsp" />
+    </definition>
+    <definition name="visita.04.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita04.jsp" />
+    </definition>
+    <definition name="visita.05.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita05.jsp" />
+    </definition>
+    <definition name="visita.06.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita06.jsp" />
+    </definition>
+    <definition name="visita.07.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita07.jsp" />
+    </definition>
+    <definition name="visita.08.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita08.jsp" />
+    </definition>
+    <definition name="visita.09.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita09.jsp" />
+    </definition>
+    <definition name="visita.10.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita10.jsp" />
+    </definition>
+    <definition name="visita.11.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita11.jsp" />
+    </definition>
+    <definition name="visita.12.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita12.jsp" />
+    </definition>
+    <definition name="visita.13.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita13.jsp" />
+    </definition>
+    <definition name="visita.14.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita14.jsp" />
+    </definition>
+    <definition name="visita.15.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita15.jsp" />
+    </definition>
+    <definition name="visita.16.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita16.jsp" />
+    </definition>
+    <definition name="visita.17.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/visita17.jsp" />
+    </definition>
+    <definition name="visita.erro.fluxo.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/errofluxo.jsp" />
+    </definition>
+    <definition name="visita.errovalidacao.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/visitas/errovalidacao.jsp" />
+    </definition> 
+    
+    <definition name="questionario.pressaoarterial.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/pressaoarterial.jsp" />
+    </definition> 
+    <definition name="questionario.medicamentouso.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/medicacoesuso.jsp" />
+    </definition> 
+    <definition name="questionario.aplicacao.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/questionarioaplicacao.jsp" />
+    </definition>
+    <definition name="questionario.berlim.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/berlim.jsp" />
+    </definition>
+    <definition name="questionario.cage.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/questionariocage.jsp" />
+    </definition>
+    <definition name="questionario.atividadefisica.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/questionarioatividadefisica.jsp" />
+    </definition>
+    <definition name="questionario.mapa.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/mapa.jsp" />
+    </definition>
+    <definition name="questionario.poligrafia.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/poligrafia.jsp" />
+    </definition>
+    <definition name="questionario.polissonografia.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/polissonografia.jsp" />
+    </definition>
+    <definition name="questionario.ecocardiograma.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/ecocardiograma.jsp" />
+    </definition>												
+    <definition name="questionario.bioquimica.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/amostraslaboratoriais.jsp" />
+    </definition>
+    <definition name="questionario.sphygmocor.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/questionarios/sphygmocor.jsp" />
+    </definition>
+    
+        
+ 	<definition name="evento.formulario.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/eventoadverso/formulario.jsp" />
+    </definition>
+    
+    <definition name="saida.formulario.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/saida/formulario.jsp" />
+    </definition>
+ 	
+ 	<definition name="aprovacao.filtro.page" extends="layout">
+    	<put name="body"   value="/paginas/estudo/aprovacao/filtro.jsp" />
+    </definition>
+ 	
+ 	<!-- LISTAS -->
+ 	<definition name="usuario.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/usuario/lista.jsp" />
+    </definition>
+ 	
+    <definition name="unidade.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/unidade/lista.jsp" />
+    </definition>
+    
+    <definition name="doenca.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/doenca/lista.jsp" />
+    </definition> 
+    
+    <definition name="grpmedicamento.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/grpmedicamento/lista.jsp" />
+    </definition> 
+    
+    <definition name="medicamento.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/admin/medicamento/lista.jsp" />
+    </definition> 
+    
+    <definition name="paciente.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/estudo/paciente/lista.jsp" />
+    </definition>
+    
+    <definition name="evento.lista.page" extends="layout-estudo">
+    	<put name="body"   value="/paginas/estudo/eventoadverso/lista.jsp" />
+    </definition>
+    
+    <definition name="aprovacao.lista.page" extends="layout">
+    	<put name="body"   value="/paginas/estudo/aprovacao/lista.jsp" />
+    </definition>
+    
+    <!-- ESTATISTICAS -->
+    <definition name="estatisticas.graficos.page" extends="layout">
+    	<put name="body"   value="/paginas/estatisticas/graficos.jsp" />
+    </definition>
+    
+    <!-- RELATORIOS -->
+    <definition name="relatorio.filtro.page" extends="layout">
+    	<put name="body"   value="/paginas/relatorios/filtro.jsp" />
+    </definition>
+    <definition name="relatorio.listaPacientes.page" extends="layout">
+    	<put name="body"   value="/paginas/relatorios/listaPacientes.jsp" />
+    </definition>
+    <definition name="relatorio.listaVisitas.page" extends="layout">
+    	<put name="body"   value="/paginas/relatorios/listaVisitas.jsp" />
+    </definition>
+    <definition name="relatorioExcel.filtro.page" extends="layout">
+    	<put name="body"   value="/paginas/relatorios/filtroExcel.jsp" />
+    </definition>
+    
+    
+    
+    <!-- AUDITORIA -->
+    <definition name="auditoria.logs.page" extends="layout">
+    	<put name="body"   value="/paginas/auditoria/logauditoria.jsp" />
+    </definition>
+    
+</tiles-definitions>
